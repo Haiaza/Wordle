@@ -1,6 +1,8 @@
 
 
 /*-------------------------------- Constants --------------------------------*/
+let guessDisplay = []
+
 let board =    ['','','','','',
                 '','','','','',
                 '','','','','',
@@ -17,7 +19,11 @@ const winCondition = [[0,1,2,3,4],
                     [20,21,22,23,24],
                     [25,26,27,28,29]]
 
-
+const testWordBank = ["About",'Alert','Beach'
+                ,"Brief"	,"Chart" ,'Curve'
+                ,"Bring" ,"Chase" ,'Cycle'
+                ,"Broad" ,"Cheap" ,'Daily'
+                ,"Broke" ,"Check" ,'Dance']
 
 /*-------------------------------- Functions --------------------------------*/
 //Upon loading, the game state should be initialized, and a function should be called to render this game state.
@@ -31,7 +37,9 @@ function clickHandle(Event) {
 
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
+let defeat = false;
 
+let currentGuess = ''
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -45,6 +53,8 @@ const keyboard = document.getElementById('keyboard')
 // });
 keyboard.addEventListener('click', (event) =>{
     console.log(event.target.textContent)
+
+    let target = event.target.textContent
 })
 
 

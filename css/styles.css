@@ -6,7 +6,7 @@ section {
     width: 70%;
     height: 80px;
     margin: auto;
-    border: 3px solid black;
+border: 3px solid black;
 }
 
 div#game-board {
@@ -21,7 +21,7 @@ div#game-board {
 
 .square {
     width: 20%;
-    height: 80px;
+    height: 55px;
     border: 1px solid black;
     background-color: blue;
     flex-wrap: wrap;
