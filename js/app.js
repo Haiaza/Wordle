@@ -22,8 +22,9 @@ const winCondition = [[0,1,2,3,4],
 /*-------------------------------- Functions --------------------------------*/
 //Upon loading, the game state should be initialized, and a function should be called to render this game state.
 
-function clickHandle(button) {
-    console.log(`We have clicked ${button}`)
+function clickHandle(Event) {
+    console.log(`We have clicked ${Event.target.textContent}`)
+    // target.textContent
 }
 // issue with the click handler
 
@@ -37,11 +38,15 @@ let victory = false;
 const buttons = document.querySelectorAll('button')
 const guessSquares = document.querySelectorAll('.square')
 const display = document.getElementById('display')
-
+const keyboard = document.getElementById('keyboard')
 /*----------------------------- Event Listeners -----------------------------*/
-buttons.forEach(button => {
-    button.addEventListener('click',clickHandle)
-});
+// buttons.forEach(button => {
+//     button.addEventListener('click',clickHandle)
+// });
+keyboard.addEventListener('click', (event) =>{
+    console.log(event.target.textContent)
+})
 
 
+// event delegation ??
 /*----------------------------- Code -----------------------------*/
