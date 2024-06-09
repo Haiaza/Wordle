@@ -32,7 +32,8 @@ function clickHandle(Event) {
     console.log(`We have clicked ${Event.target.textContent}`)
     // target.textContent
 }
-// issue with the click handler
+// i want to assign the board[idx] to the guessvalue
+// how is the question
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -45,7 +46,7 @@ let currentGuess = ''
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll('button')
 const guessSquares = document.querySelectorAll('.square')
-const display = document.getElementById('display')
+const rowDisplay = document.querySelectorAll('.row')
 const keyboard = document.getElementById('keyboard')
 /*----------------------------- Event Listeners -----------------------------*/
 // buttons.forEach(button => {
@@ -60,3 +61,4 @@ keyboard.addEventListener('click', (event) =>{
 
 // event delegation ??
 /*----------------------------- Code -----------------------------*/
+
