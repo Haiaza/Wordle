@@ -36,3 +36,18 @@ div.row {
     display: flex;
 	
 }
+
+#keyboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyBtns {
+    
+}
+
+.keyBtns > button {
+    margin: 1px
+}
