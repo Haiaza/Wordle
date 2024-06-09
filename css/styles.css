@@ -2,6 +2,13 @@ body {
     background-color: grey; /*colors are for testing and visual clarity*/
 }
 
+section {
+    width: 70%;
+    height: 80px;
+    margin: auto;
+    border: 3px solid black;
+}
+
 div#game-board {
     width: 70%;
     /* height: auto; */
@@ -14,11 +21,13 @@ div#game-board {
 
 .square {
     width: 20%;
-    height: 100px;
+    height: 80px;
     border: 1px solid black;
     background-color: blue;
     flex-wrap: wrap;
 }
+/* the buttons are a bit big */
+
 
 div.row {
     width: 100%;
