@@ -39,14 +39,18 @@ function clickHandle(event) {
     } else {
         alert('Click inside the button')
     }
-    
+
     currentIndex++
     
     
     // 
 }
-// i want to assign the board[idx] to the guessvalue
-// how is the question
+
+function checkRow(){
+    if (condition) {
+        
+    }
+}
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -60,7 +64,11 @@ for (let i = 0; i < 29; i++) {
     squareIds.push(document.getElementById(i));
 
 }
-console.log(squareIds[1])
+rowIds = []
+for (let i = 0; i < 29; i++) {
+    rowIds.push(document.getElementById(i));
+
+}
 let targetSquare = squareIds[currentIndex]
 
 /*------------------------ Cached Element References ------------------------*/
@@ -68,7 +76,7 @@ const buttons = document.querySelectorAll('button')
 const guessSquares = document.querySelectorAll('.square')
 const rowDisplay = document.querySelectorAll('.row')
 const keyboard = document.getElementById('keyboard')
-
+const rows = document.getElementsByClassName('row')
 /*----------------------------- Event Listeners -----------------------------*/
 // buttons.forEach(button => {
 //     button.addEventListener('click',clickHandle)
