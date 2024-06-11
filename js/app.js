@@ -30,11 +30,18 @@ const testWordBank = ["About",'Alert','Beach'
 
 function clickHandle(event) {
     let target = event.target
-    if (target.classList.contains('keyBtns')) {
-        console.log(`We have clicked ${event.target.textContent}`)
+    // tagName returns all caps, so we search for allCaps.
+    if (target.tagName === 'BUTTON') {
+        console.log(`We have clicked ${event.target.textContent}`) // still doesnt work atm
+        board[currentIndex] = target.textContent
+
+        
+    } else {
+        alert('Click inside the button')
     }
-    // i keep forgetting the importance/significance of state!
-    board[targetSquare] = target.textContent
+    
+    currentIndex++
+    
     
     // 
 }
@@ -47,8 +54,14 @@ let victory = false;
 let defeat = false;
 
 let currentGuess = ''
-const updateSquare = document.getElementById(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29)
-let targetSquare = updateSquare.id
+let currentIndex = 0
+squareIds = []
+for (let i = 0; i < 29; i++) {
+    squareIds.push(document.getElementById(i));
+
+}
+console.log(squareIds[1])
+let targetSquare = squareIds[currentIndex]
 
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll('button')
