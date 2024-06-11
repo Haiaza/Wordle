@@ -83,7 +83,12 @@ function clickHandle(event) {
   //
 }
 
-function checkRow() {}
+function checkRow() {
+  // each row is made of divs i need to target
+  const rowDivs = document.querySelectorAll("div.row div");
+  for (let div of rowDivs) {
+  }
+}
 
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
