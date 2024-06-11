@@ -30,12 +30,13 @@ const testWordBank = ["About",'Alert','Beach'
 
 function clickHandle(event) {
     let target = event.target
-    if (target.class === 'square') {
+    if (target.classList.contains('keyBtns')) {
         console.log(`We have clicked ${event.target.textContent}`)
     }
+    // i keep forgetting the importance/significance of state!
+    board[targetSquare] = target.textContent
     
-    board[targetSquare] = 'T'
-    // target.textContent
+    // 
 }
 // i want to assign the board[idx] to the guessvalue
 // how is the question
