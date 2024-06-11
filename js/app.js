@@ -30,7 +30,7 @@ const testWordBank = ["About",'Alert','Beach'
 
 function clickHandle(Event) {
     console.log(`We have clicked ${Event.target.textContent}`)
-    let target = event.target.textContent
+    let target = event.target
     
     // target.textContent
 }
@@ -50,7 +50,7 @@ const buttons = document.querySelectorAll('button')
 const guessSquares = document.querySelectorAll('.square')
 const rowDisplay = document.querySelectorAll('.row')
 const keyboard = document.getElementById('keyboard')
-const updateSquare = document.getElementById(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29)
+const updateSquare = document.getElementById(target.id)
 /*----------------------------- Event Listeners -----------------------------*/
 // buttons.forEach(button => {
 //     button.addEventListener('click',clickHandle)
