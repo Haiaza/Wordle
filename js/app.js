@@ -43,14 +43,17 @@ function clickHandle(event) {
     } else {
     alert("Click inside the button");
     }
-
+    checkRow()
   //
 }
 
-function checkRow() {
+function checkRow(event) {
   // each row is made of divs i need to target
     const rowDivs = document.querySelectorAll("div.row div");
     for (let div of rowDivs) {
+        if (target.textContent === '') {
+            console.log('Test complete')
+        }
     }
 }
 
