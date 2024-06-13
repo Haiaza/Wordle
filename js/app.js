@@ -38,6 +38,8 @@ function clickHandle(event) {
     let square = document.getElementById(currentIndex);
     // since the id's of each box is just their index, we can use that to get the square.
     square.innerHTML = target.textContent;
+    letterList.push(target.textContent)
+    
     checkRow()
     currentIndex++;
     } else {
@@ -50,33 +52,31 @@ function clickHandle(event) {
 function checkRow(rowNumber) {
   // each row is made of divs i need to target
     const rowDivs = document.querySelectorAll(`#row${rowNumber} div`);
-    // const currentRow = Math.floor(currentIndex/5) 
     for (let div of rowDivs) {
         if (div.textContent === '') {
             console.log('Test complete');
             return false
         }
+        //todo code for the correctGuess
     } return true
 }
 
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
 let defeat = false;
-
+//  pushed into every click. check if this array content matches the randomWord
+let letterList = []
 let currentGuess = "";
 let currentIndex = 0;
 squareIds = [];
 for (let i = 0; i < 29; i++) {
     squareIds.push(document.getElementById(i));
 } 
-rowIds = [];
-for (let i = 0; i < 29; i++) {
-    rowIds.push(document.getElementById(i));
-}
-let targetSquare = squareIds[currentIndex];
 
-const randomWord = testWordBank[Math.floor(Math.random()*testWordBank)]
-// i googled 'how to randomize the selection from an array' At the moment it returns NaN
+
+
+const randomWord = testWordBank[Math.floor(Math.random()*testWordBank.length)]
+// i googled 'how to randomize the selection from an array' NaN was due to the random number being put against literally Not a Number. i relearned .length functions as a counter for array items. 
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll("button");
 const Squares = document.querySelectorAll(".square");
@@ -91,3 +91,16 @@ keyboard.addEventListener("click", clickHandle);
 
 // event delegation ??
 /*----------------------------- Code -----------------------------*/
+
+
+
+
+/*----------------------------- Code Graveyard -----------------------------*/
+
+// rowIds = [];
+// for (let i = 0; i < 29; i++) {
+//     rowIds.push(document.getElementById(i));
+// }  Im not sure i will need this code anymore but it may be useful
+
+// let targetSquare = squareIds[currentIndex]; 
+// i had a good idea with this but im not at that stage yet
