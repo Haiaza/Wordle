@@ -38,23 +38,25 @@ function clickHandle(event) {
     let square = document.getElementById(currentIndex);
     // since the id's of each box is just their index, we can use that to get the square.
     square.innerHTML = target.textContent;
-
+    checkRow()
     currentIndex++;
     } else {
     alert("Click inside the button");
     }
-    checkRow()
+    
   //
 }
 
-function checkRow(event) {
+function checkRow(rowNumber) {
   // each row is made of divs i need to target
-    const rowDivs = document.querySelectorAll("div.row div");
+    const rowDivs = document.querySelectorAll(`#row${rowNumber} div`);
+    // const currentRow = Math.floor(currentIndex/5) 
     for (let div of rowDivs) {
-        if (target.textContent === '') {
-            console.log('Test complete')
+        if (div.textContent === '') {
+            console.log('Test complete');
+            return false
         }
-    }
+    } return true
 }
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -66,13 +68,15 @@ let currentIndex = 0;
 squareIds = [];
 for (let i = 0; i < 29; i++) {
     squareIds.push(document.getElementById(i));
-}
+} 
 rowIds = [];
 for (let i = 0; i < 29; i++) {
     rowIds.push(document.getElementById(i));
 }
 let targetSquare = squareIds[currentIndex];
 
+const randomWord = testWordBank[Math.floor(Math.random()*testWordBank)]
+// i googled 'how to randomize the selection from an array' At the moment it returns NaN
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll("button");
 const Squares = document.querySelectorAll(".square");
