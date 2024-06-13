@@ -77,6 +77,7 @@ function clickHandle(event) {
 
     checkRow();
     joinLetter();
+    correctGuess();
     currentIndex++;
   } else {
     alert("Click inside the button");
@@ -108,19 +109,20 @@ function joinLetter() {
     let p1 = currentGuess.slice(0, 1);
     let p2 = currentGuess.slice(1);
     let rebuild = p1.toUpperCase() + p2.toLowerCase();
-    rebuild = currentGuess; // the logic looks good but there is a bug
+    currentGuess = rebuild; // the logic looks good but there is a bug
     console.log(`${currentGuess} New Message`);
   }
 
-  function correctGuess() {
-    if (currentGuess === randomWord) {
-      console.log("Match found");
-    } else {
-      alert("Nice try");
-    }
-  }
   // make function for checking if the two match. if the return is true...tbd
   // if the return is false current guess will be reverted back to being blank
+}
+
+function correctGuess() {
+  if (currentGuess === randomWord) {
+    console.log("Match found");
+  } else {
+    // alert("Nice try");
+  }
 }
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
@@ -128,6 +130,7 @@ let defeat = false;
 //  pushed into every click. check if this array content matches the randomWord
 let letterList = [];
 let currentGuess = "";
+
 let currentIndex = 0;
 squareIds = [];
 for (let i = 0; i < 29; i++) {
