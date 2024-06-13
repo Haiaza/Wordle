@@ -54,7 +54,7 @@ function checkRow(rowNumber) {
     const rowDivs = document.querySelectorAll(`#row${rowNumber} div`);
     for (let div of rowDivs) {
         if (div.textContent === '') {
-            console.log('Test complete');
+            console.log('Test failed');
             return false
         }
         //todo code for the correctGuess
@@ -66,9 +66,7 @@ function joinLetter(){
         console.log(`${currentGuess.length + 1} letters`)
     } currentGuess = letterList.join('');
     if (currentGuess.length = 5) {
-        // make function for checking if the two match. if the return is true...tbd
-        // if the return is false current guess will be reverted back to being blank
-    }
+        // somewhere i need to work in a string split that makes the ending portion lowercase.
     
     console.log(currentGuess)
 }
@@ -81,7 +79,9 @@ function correctGuess(){
         alert('Nice try')
     }
 }
-
+// make function for checking if the two match. if the return is true...tbd
+        // if the return is false current guess will be reverted back to being blank
+    }
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
 let defeat = false;
