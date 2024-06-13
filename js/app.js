@@ -33,7 +33,6 @@ function clickHandle(event) {
     let target = event.target;
   // tagName returns all caps, so we search for allCaps.
     if (target.tagName === "BUTTON") {
-    console.log(`We have clicked ${event.target.textContent}`);
     board[currentIndex] = target.textContent;
     let square = document.getElementById(currentIndex);
     // since the id's of each box is just their index, we can use that to get the square.
@@ -41,6 +40,7 @@ function clickHandle(event) {
     letterList.push(target.textContent)
     
     checkRow()
+    joinLetter()
     currentIndex++;
     } else {
     alert("Click inside the button");
@@ -62,7 +62,14 @@ function checkRow(rowNumber) {
 }
 
 function joinLetter(){
-    currentGuess = letterList.join('');
+    if (currentGuess.length < 4) {
+        console.log(`${currentGuess.length + 1} letters`)
+    } currentGuess = letterList.join('');
+    if (currentGuess.length = 5) {
+        // make function for checking if the two match. if the return is true...tbd
+        // if the return is false current guess will be reverted back to being blank
+    }
+    
     console.log(currentGuess)
 }
 
