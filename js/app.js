@@ -110,7 +110,7 @@ function joinLetter() {
     let p2 = currentGuess.slice(1);
     let rebuild = p1.toUpperCase() + p2.toLowerCase();
     currentGuess = rebuild; // the logic looks good but there is a bug
-    console.log(`${currentGuess} New Message`);
+    console.log(`${currentGuess} is our guess!`);
   }
 
   // make function for checking if the two match. if the return is true...tbd
