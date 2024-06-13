@@ -61,6 +61,11 @@ function checkRow(rowNumber) {
     } return true
 }
 
+function joinLetter(){
+    currentGuess = letterList.join('');
+    console.log(currentGuess)
+}
+
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
 let defeat = false;
