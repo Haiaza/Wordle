@@ -73,6 +73,15 @@ function joinLetter(){
     console.log(currentGuess)
 }
 
+
+function correctGuess(){
+    if (currentGuess === randomWord) {
+        console.log('Match found')
+    } else {
+        alert('Nice try')
+    }
+}
+
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
 let defeat = false;
