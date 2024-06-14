@@ -78,6 +78,7 @@ function clickHandle(event) {
     checkRow();
     joinLetter();
     correctGuess();
+    winnerWinner();
     currentIndex++;
   } else {
     alert("Click inside the button");
@@ -109,8 +110,8 @@ function joinLetter() {
     let p1 = currentGuess.slice(0, 1);
     let p2 = currentGuess.slice(1);
     let rebuild = p1.toUpperCase() + p2.toLowerCase();
-    currentGuess = rebuild; // the logic looks good but there is a bug
-    console.log(`${currentGuess} is our guess!`);
+    currentGuessRebuilt = rebuild; // the logic looks good but there is a bug
+    console.log(`${currentGuessRebuilt} is our guess!`);
   }
 
   // make function for checking if the two match. if the return is true...tbd
@@ -118,18 +119,28 @@ function joinLetter() {
 }
 
 function correctGuess() {
-  if (currentGuess === randomWord) {
+  if (currentGuessRebuilt === randomWord) {
     console.log("Match found");
-  } else {
-    // alert("Nice try");
+    return true
   }
 }
+
+function winnerWinner = (false) => {
+    if (correctGuess){
+        alert(`You won in ${currentIndex} turns`)
+    } else {
+        return false
+    }
+}
+
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
 let defeat = false;
 //  pushed into every click. check if this array content matches the randomWord
 let letterList = [];
 let currentGuess = "";
+let currentGuessRebuilt = ''
+
 
 let currentIndex = 0;
 squareIds = [];
@@ -140,6 +151,9 @@ for (let i = 0; i < 29; i++) {
 const randomWord =
   testWordBank[Math.floor(Math.random() * testWordBank.length)];
 // i googled 'how to randomize the selection from an array' NaN was due to the random number being put against literally Not a Number. i relearned .length functions as a counter for array items.
+
+let cLetters = randomWord.split('')
+console.log(`the correct letters are ${cLetters}`)
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll("button");
 const Squares = document.querySelectorAll(".square");
