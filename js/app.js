@@ -98,7 +98,6 @@ function checkRow(rowNumber) {
       console.log("Test failed");
       return false;
     }
-    //todo code for the correctGuess
   }
   return true;
 }
@@ -109,17 +108,24 @@ function joinLetter() {
   }
   currentGuess = letterList.join("");
   if (currentGuess.length === 5) {
-    // somewhere i need to work in a string split that makes the ending portion lowercase.
-    let p1 = currentGuess.slice(0, 1);
-    let p2 = currentGuess.slice(1);
-    let rebuild = p1.toUpperCase() + p2.toLowerCase();
-    currentGuessRebuilt = rebuild; // the logic looks good but there is a bug
-    console.log(`${currentGuessRebuilt} is our guess!`);
+    let currentGuessRebuilt = currentGuess.slice(0, 1).toUpperCase() + currentGuess.slice(1).toLowerCase();
+        console.log(`${currentGuessRebuilt} is our guess!`);
   }
-
-  // make function for checking if the two match. if the return is true...tbd
-  // if the return is false current guess will be reverted back to being blank
 }
+
+function checkGuess(){
+    const checkHandler = currentGuessRebuilt.forEeach(letter => {
+      if (randomWord[letter] === letter){
+        console.log('Test1')
+        // if the letter is in the right spot, it should be green thru css
+      } else if (letter === randomWord[i]){
+        console.log('Test2')
+        // if the letter is in the word but not in the right spot, it should be yellow thru           css
+      } else {
+        console.log('Test3')
+        // if the letter is not in the word, it should be gray thru css
+      }
+    })}
 
 function correctGuess() {
   if (currentGuessRebuilt === randomWord) {
@@ -160,15 +166,17 @@ let currentGuessRebuilt = ''
 let currentIndex = 0;
 squareIds = [];
 for (let i = 0; i < 29; i++) {
-  squareIds.push(document.getElementById(i));
+squareIds.push(document.getElementById(i));
 }
 
 const randomWord =
   testWordBank[Math.floor(Math.random() * testWordBank.length)];
 // i googled 'how to randomize the selection from an array' NaN was due to the random number being put against literally Not a Number. i relearned .length functions as a counter for array items.
 
-let cLetters = randomWord.split('')
+let cLetters = randomWord.split('') // list of 5
 console.log(`the correct letters are ${cLetters}`)
+
+
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll("button");
 const squares = document.querySelectorAll(".square");
