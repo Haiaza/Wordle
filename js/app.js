@@ -78,7 +78,10 @@ function clickHandle(event) {
     checkRow();
     joinLetter();
     correctGuess();
-    winnerWinner();
+    if (victory){
+        winnerWinner();
+        return;
+    }
     currentIndex++;
   } else {
     alert("Click inside the button");
@@ -89,7 +92,7 @@ function clickHandle(event) {
 
 function checkRow(rowNumber) {
   // each row is made of divs i need to target
-  const rowDivs = document.querySelectorAll(`#row${rowNumber} div`);
+  const rowDivs = document.querySelectorAll(`#row${rowNumber} div`); 
   for (let div of rowDivs) {
     if (div.textContent === "") {
       console.log("Test failed");
@@ -101,7 +104,7 @@ function checkRow(rowNumber) {
 }
 
 function joinLetter() {
-  if (currentGuess.length < 4) {
+  if (currentGuess.length < 5) {
     console.log(`${currentGuess.length + 1} letters`);
   }
   currentGuess = letterList.join("");
@@ -121,17 +124,29 @@ function joinLetter() {
 function correctGuess() {
   if (currentGuessRebuilt === randomWord) {
     console.log("Match found");
-    return true
+    victory = true;
+  } else if (currentGuessRebuilt.length === 5) {
+    console.log('This is not a match, try again');
+    letterList = []
+    currentGuess =  ''
+    currentGuessRebuilt = ''
   }
 }
 
-function winnerWinner = (false) => {
-    if (correctGuess){
-        alert(`You won in ${currentIndex} turns`)
-    } else {
-        return false
+
+function winnerWinner(){
+    if (victory){
+        console.log(`You won in ${currentIndex + 1} turns`)
+        return 
     }
 }
+
+
+// function matchingLetters() {
+//     cLetters.forEach(letter => {
+//         if letter[index]
+//     });
+// }
 
 /*---------------------------- Variables (state) ----------------------------*/
 let victory = false;
@@ -156,7 +171,7 @@ let cLetters = randomWord.split('')
 console.log(`the correct letters are ${cLetters}`)
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll("button");
-const Squares = document.querySelectorAll(".square");
+const squares = document.querySelectorAll(".square");
 const rowDisplay = document.querySelectorAll(".row");
 const keyboard = document.getElementById("keyboard");
 const rows = document.getElementsByClassName("row");
