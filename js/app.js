@@ -55,11 +55,11 @@ function clickHandle(event) {
 
     currentGuess = letterList.join('')
 
-    let rowIndex = Math.floor(currentIndex / 6);
+    let rowIndex = Math.floor(currentIndex / 5);
     let colIndex = currentIndex % 6;
 
     joinLetter();
-    checkGuess();
+    checkGuess( rowIndex,colIndex);
     correctGuess();
     if (victory) {
       winnerWinner();
@@ -91,12 +91,14 @@ function checkGuess(rowIndex,colIndex) {
   let matchingLetters = 0;
   
   for (let i = 0; i < 5; i++) {
-    if (board[rowIndex * 6 + i] === cLetters[i]){
-      document.querySelector(`#row${Math.floor(currentIndex / 6)}`).style.backgroundColor = 'green' // this line needs to change
+    if (board[`${rowIndex}` * 5 + i] === cLetters[i]){
+      // board[`${rowIndex}`] is undefined ??
+      document.getElementById(rowIndex * 5 + 1)  // this line needs to change
+      console.log('tst')
     }
   
 }
-  matchingLetters++
+ 
   console.log(`There are ${matchingLetters} matching letters!`);
 }
 
