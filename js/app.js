@@ -2,36 +2,11 @@
 let guessDisplay = [];
 
 let board = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
+  "","","","","","",
+  "","","","","","",
+  "","","","","","",
+  "","","","","","",
+  "","","","","","",
 ];
 // the user needs to get the correct guesses on the board in a line for a win.
 
@@ -45,21 +20,9 @@ const winCondition = [
 ];
 
 const testWordBank = [
-  "About",
-  "Alert",
-  "Beach",
-  "Brief",
-  "Chart",
-  "Curve",
-  "Bring",
-  "Chase",
-  "Cycle",
-  "Broad",
-  "Cheap",
-  "Daily",
-  "Broke",
-  "Check",
-  "Dance",
+  "About","Alert","Beach","Brief","Chart",
+  "Curve","Bring","Chase","Cycle","Broad",
+  "Cheap","Daily","Broke","Check","Dance",
 ];
 
 /*-------------------------------- Functions --------------------------------*/
@@ -77,10 +40,14 @@ function clickHandle(event) {
 
     checkRow();
     joinLetter();
+    checkGuess();
     correctGuess();
-    if (victory){
-        winnerWinner();
-        return;
+    if (victory) {
+      winnerWinner();
+      return;
+    } else if (!victory && currentIndex === 29) {
+      loserLoser();
+      return;
     }
     currentIndex++;
   } else {
@@ -92,7 +59,7 @@ function clickHandle(event) {
 
 function checkRow(rowNumber) {
   // each row is made of divs i need to target
-  const rowDivs = document.querySelectorAll(`#row${rowNumber} div`); 
+  const rowDivs = document.querySelectorAll(`#row${rowNumber} div`);
   for (let div of rowDivs) {
     if (div.textContent === "") {
       console.log("Test failed");
@@ -108,45 +75,55 @@ function joinLetter() {
   }
   currentGuess = letterList.join("");
   if (currentGuess.length === 5) {
-    let currentGuessRebuilt = currentGuess.slice(0, 1).toUpperCase() + currentGuess.slice(1).toLowerCase();
-        console.log(`${currentGuessRebuilt} is our guess!`);
+    currentGuessRebuilt =
+      currentGuess.slice(0, 1).toUpperCase() +
+      currentGuess.slice(1).toLowerCase();
+    console.log(`${currentGuessRebuilt} is our guess!`);
   }
 }
 
-function checkGuess(){
-    const checkHandler = currentGuessRebuilt.forEeach(letter => {
-      if (randomWord[letter] === letter){
-        console.log('Test1')
-        // if the letter is in the right spot, it should be green thru css
-      } else if (letter === randomWord[i]){
-        console.log('Test2')
-        // if the letter is in the word but not in the right spot, it should be yellow thru           css
-      } else {
-        console.log('Test3')
-        // if the letter is not in the word, it should be gray thru css
-      }
-    })}
+function checkGuess() {
+  let matchingLetters = 0;
+  for (let i = 0; i < 5; i++) {
+    if (currentGuessRebuilt[i] === cLetters[i]) {
+      document.getElementById(`${currentIndex}`).style.backgroundColor =
+        "green";
+        matchingLetters++;
+    } 
+    else if (cLetters.includes(currentGuessRebuilt[i])) {
+      document.getElementById(`${currentIndex}`).style.backgroundColor =
+        "yellow";
+        matchingLetters++;
+    } 
+    // else if (currentGuessRebuilt[i] !== letterList[i]){
+    //   document.getElementById(`${currentIndex}`).style.backgroundColor = "grey";
+    // }
+  }
+  console.log(`There are ${matchingLetters} matching letters!`);
+}
 
 function correctGuess() {
   if (currentGuessRebuilt === randomWord) {
     console.log("Match found");
     victory = true;
   } else if (currentGuessRebuilt.length === 5) {
-    console.log('This is not a match, try again');
-    letterList = []
-    currentGuess =  ''
-    currentGuessRebuilt = ''
+    console.log("This is not a match, try again");
+    letterList = [];
+    currentGuess = "";
+    currentGuessRebuilt = "";
   }
 }
 
-
-function winnerWinner(){
-    if (victory){
-        console.log(`You won in ${currentIndex + 1} turns`)
-        return 
-    }
+function winnerWinner() {
+  if (victory) {
+    console.log(`You won in ${currentIndex + 1} turns`);
+    return;
+  }
 }
-
+function loserLoser() {
+  console.log(`You lost! The word was ${randomWord}`);
+  return;
+}
 
 // function matchingLetters() {
 //     cLetters.forEach(letter => {
@@ -160,22 +137,20 @@ let defeat = false;
 //  pushed into every click. check if this array content matches the randomWord
 let letterList = [];
 let currentGuess = "";
-let currentGuessRebuilt = ''
-
+let currentGuessRebuilt = "";
 
 let currentIndex = 0;
 squareIds = [];
 for (let i = 0; i < 29; i++) {
-squareIds.push(document.getElementById(i));
+  squareIds.push(document.getElementById(i));
 }
 
 const randomWord =
   testWordBank[Math.floor(Math.random() * testWordBank.length)];
 // i googled 'how to randomize the selection from an array' NaN was due to the random number being put against literally Not a Number. i relearned .length functions as a counter for array items.
 
-let cLetters = randomWord.split('') // list of 5
-console.log(`the correct letters are ${cLetters}`)
-
+let cLetters = randomWord.split(""); // list of 5
+console.log(`the correct letters are ${cLetters}`);
 
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll("button");
