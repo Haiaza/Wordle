@@ -104,7 +104,7 @@ function checkGuess(rowIndex,colIndex) {
       document.getElementById(rowIndex * 5 + i).classList.add('yellow')
     } 
 
-    else  if (!cLetters.includes(board[`${rowIndex}`])){
+    else  if (cLetters.includes(board[`${rowIndex}`]) == -1){
       document.getElementById(rowIndex * 5 + i).classList.add('grey')
     }
 }
@@ -129,6 +129,7 @@ function winnerWinner() {
   }
 }
 function loserLoser() {
+  defeat = true
   document.querySelector('p').textContent = 'Oops... try again?';
   return;
 }

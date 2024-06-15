@@ -12,7 +12,7 @@ border: 3px solid black;
 div#game-board {
     width: 70%;
     /* height: auto; */
-    border: 3px solid white;
+    border: 3px solid purple;
 	display: flex;
     flex-wrap: wrap;
     justify-content:space-between;
@@ -22,13 +22,15 @@ div#game-board {
 p {
     font-size: 20px;
     margin: auto;
+    color: white;
+    padding: 10px 0px;
 }
 
 .square {
     width: 20%;
     height: 55px;
     border: 1px solid black;
-    /* background-color: blue; */
+    background-color: seashell;
     flex-wrap: wrap;
     color: black;
     text-align: center;
