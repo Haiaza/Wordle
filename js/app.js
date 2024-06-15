@@ -10,14 +10,7 @@ let board = [
 ];
 // the user needs to get the correct guesses on the board in a line for a win.
 
-const winCondition = [
-  [0, 1, 2, 3, 4],
-  [5, 6, 7, 8, 9],
-  [10, 11, 12, 13, 14],
-  [15, 16, 17, 17, 19],
-  [20, 21, 22, 23, 24],
-  [25, 26, 27, 28, 29],
-];
+
 
 const testWordBank = [
   "About","Alert","Beach","Brief","Chart",
@@ -85,22 +78,11 @@ function joinLetter() {
 function checkGuess() {
   let matchingLetters = 0;
   for (let i = 0; i < 5; i++) {
-    if (currentGuessRebuilt[i] === cLetters[i]) {
-        document.getElementById(`${currentIndex}`).style.backgroundColor =
-        "green";
-        matchingLetters++;
-    } 
-    else if (cLetters.includes(currentGuessRebuilt[i])) {
-        document.getElementById(`${currentIndex}`).style.backgroundColor =
-        "yellow";
-        matchingLetters++;
-    } 
-    // else if (currentGuessRebuilt[i] !== letterList[i]){
-    //   document.getElementById(`${currentIndex}`).style.backgroundColor = "grey";
-    // }
-  }
+    if (currentGuessRebuilt[i] === cLetters[i]){
+      document.querySelector(`#row`)
+    }
   console.log(`There are ${matchingLetters} matching letters!`);
-}
+}}
 
 function correctGuess() {
   if (currentGuessRebuilt === randomWord) {
@@ -158,6 +140,16 @@ const squares = document.querySelectorAll(".square");
 const rowDisplay = document.querySelectorAll(".row");
 const keyboard = document.getElementById("keyboard");
 const rows = document.getElementsByClassName("row");
+columns = []
+for (let i = 0; i < 6; i++){
+  columns.push(document.getElementsByClassName(`column-${i + 1}`))
+}
+rows = []
+  for (let i = 0; i < 7; i++) {
+    rows.push(document.querySelector(`row${i + 1}`))
+    
+  }
+
 /*----------------------------- Event Listeners -----------------------------*/
 // buttons.forEach(button => {
 //     button.addEventListener('click',clickHandle)
