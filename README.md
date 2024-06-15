@@ -2,7 +2,7 @@
 
 Wordle is a word guessing game.  
 
-![Logo]((image.png))
+![Logo](image.png)
 
 # Technologies Used
 HTML - CSS - JS
