@@ -26,7 +26,8 @@ let victory = false;
 let defeat = false;
 
 let letterList = [];
-let currentGuess = "";
+let currentGuess = [];
+let corretGuesses = [];
 
 
 let currentIndex = 0;
@@ -39,7 +40,7 @@ const randomWord =
   testWordBank[Math.floor(Math.random() * testWordBank.length)];
 
 let cLetters = randomWord.split(""); 
-console.log(`the correct letters are ${cLetters}`);
+
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -96,13 +97,16 @@ function checkGuess(rowIndex,colIndex) {
     let rowIndex = Math.floor(currentIndex / 5);
     if (board[`${rowIndex}` * 5 + i] === cLetters[i]){
       matchingLetters++
-      document.getElementById(rowIndex * 5 + i).style.backgroundColor ='red'  // this line needs to change
-    } else if (cLetters.includes(board[`${rowIndex}` * 5 + i])){
-      document.getElementById(rowIndex * 5 + i).style.backgroundColor ='yellow'
-    } else {
-      document.getElementById(rowIndex * 5 + i).style.backgroundColor ='white'
-    }
+      document.getElementById(rowIndex * 5 + i).classList.add('green');  // this line needs to change
+    } 
 
+    else if (cLetters.includes(board[`${rowIndex}` * 5 + i])){
+      document.getElementById(rowIndex * 5 + i).classList.add('yellow')
+    } 
+
+    else  if (!cLetters.includes(board[`${rowIndex}`])){
+      document.getElementById(rowIndex * 5 + i).classList.add('grey')
+    }
 }
 
   console.log(`There are ${matchingLetters} matching letters!`);
@@ -110,22 +114,22 @@ function checkGuess(rowIndex,colIndex) {
 
 function correctGuess() {
   if (currentGuess === randomWord) {
-    console.log("Match found");
+    document.querySelector('p.alt').textContent = "Match found!";
     victory = true;
   } else if (currentGuess.length === 5) {
-    console.log("This is not a match, try again");
+    document.querySelector('p.alt').textContent = "This is not a match, try again";
     currentGuess = "";
   }
 }
 
 function winnerWinner() {
   if (victory) {
-    console.log(`You won in ${currentIndex + 1} turns`);
+    document.querySelector('p').textContent = 'You won!';
     return;
   }
 }
 function loserLoser() {
-  console.log(`You lost! The word was ${randomWord}`);
+  document.querySelector('p').textContent = 'Oops... try again?';
   return;
 }
 
