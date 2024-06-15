@@ -79,7 +79,7 @@ function checkGuess() {
   let matchingLetters = 0;
   for (let i = 0; i < 5; i++) {
     if (currentGuessRebuilt[i] === cLetters[i]){
-      document.querySelector(`#row`)
+      document.querySelector(`#row ${i + 1}` `#${currentIndex}`).style.backgroundColor = 'green'
     }
   console.log(`There are ${matchingLetters} matching letters!`);
 }}
