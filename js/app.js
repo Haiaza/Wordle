@@ -77,9 +77,9 @@ function joinLetter() {
 
 function checkGuess() {
   let matchingLetters = 0;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 1; i < 5; i++) {
     if (currentGuessRebuilt[i] === cLetters[i]){
-      document.querySelector(`#row ${i + 1}` `#${currentIndex}`).style.backgroundColor = 'green'
+      document.querySelector(`#row${i}``#${currentIndex}`).style.backgroundColor = 'green'
     }
   console.log(`There are ${matchingLetters} matching letters!`);
 }}
@@ -139,7 +139,7 @@ const buttons = document.querySelectorAll("button");
 const squares = document.querySelectorAll(".square");
 const rowDisplay = document.querySelectorAll(".row");
 const keyboard = document.getElementById("keyboard");
-const rows = document.getElementsByClassName("row");
+
 columns = []
 for (let i = 0; i < 6; i++){
   columns.push(document.getElementsByClassName(`column-${i + 1}`))
