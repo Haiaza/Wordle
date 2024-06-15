@@ -81,6 +81,13 @@ function checkGuess() {
     if (currentGuessRebuilt[i] === cLetters[i]){
       document.querySelector(`#row${i}``#${currentIndex}`).style.backgroundColor = 'green'
     }
+    else if (cLetters.includes(currentGuessRebuilt[i])) {
+      document.querySelector(`#row${i}``#${currentIndex}`).style.backgroundColor =
+        "yellow";
+    }
+    else {
+      document.querySelector(`#row${i}``#${currentIndex}`).style.backgroundColor = "grey";
+      }
   console.log(`There are ${matchingLetters} matching letters!`);
 }}
 
