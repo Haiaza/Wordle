@@ -27,7 +27,7 @@ let defeat = false;
 
 let letterList = [];
 let currentGuess = "";
-let currentGuessRebuilt = [];
+
 
 let currentIndex = 0;
 squareIds = [];
@@ -55,7 +55,7 @@ function clickHandle(event) {
 
     currentGuess = letterList.join('')
 
-    let rowIndex = Math.floor(currentIndex / 5);
+    const rowIndex = Math.floor(currentIndex / 5);
     let colIndex = currentIndex % 6;
 
     joinLetter();
@@ -103,12 +103,12 @@ function checkGuess(rowIndex,colIndex) {
 }
 
 function correctGuess() {
-  if (currentGuessRebuilt === randomWord) {
+  if (currentGuess === randomWord) {
     console.log("Match found");
     victory = true;
-  } else if (currentGuessRebuilt.length === 5) {
+  } else if (currentGuess.length === 5) {
     console.log("This is not a match, try again");
-    currentGuessRebuilt = "";
+    currentGuess = "";
   }
 }
 
