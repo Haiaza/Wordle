@@ -28,7 +28,7 @@ p {
     width: 20%;
     height: 55px;
     border: 1px solid black;
-    background-color: blue;
+    /* background-color: blue; */
     flex-wrap: wrap;
 }
 /* the buttons are a bit big */
@@ -37,7 +37,7 @@ p {
 div.row {
     width: 100%;
 	height: auto;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
 	
 }

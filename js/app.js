@@ -2,11 +2,12 @@
 let guessDisplay = [];
 
 let board = [
-  "","","","","","",
-  "","","","","","",
-  "","","","","","",
-  "","","","","","",
-  "","","","","","",
+  "","","","","",
+  "","","","","",
+  "","","","","",
+  "","","","","",
+  "","","","","",
+  "","","","","",
 ];
 
 
@@ -54,6 +55,9 @@ function clickHandle(event) {
 
     currentGuess = letterList.join('')
 
+    let rowIndex = Math.floor(currentIndex / 6);
+    let colIndex = currentIndex % 6;
+
     joinLetter();
     checkGuess();
     correctGuess();
@@ -83,16 +87,18 @@ function joinLetter() {
   }
 }
 
-function checkGuess() {
+function checkGuess(rowIndex,colIndex) {
   let matchingLetters = 0;
   
   for (let i = 0; i < 5; i++) {
-    if (currentGuess[i] === cLetters[i]){
-                                    // document.querySelector(`#row${i}`).style.backgroundColor = 'green' for later
+    if (board[rowIndex * 6 + i] === cLetters[i]){
+      document.querySelector(`#row${Math.floor(currentIndex / 6)}`).style.backgroundColor = 'green' // this line needs to change
     }
-
+  
+}
+  matchingLetters++
   console.log(`There are ${matchingLetters} matching letters!`);
-}}
+}
 
 function correctGuess() {
   if (currentGuessRebuilt === randomWord) {
