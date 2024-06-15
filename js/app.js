@@ -12,12 +12,33 @@ let board = [
 
 
 
-const testWordBank = [
+let testWordBank = [
   "About","Alert","Beach","Brief","Chart",
   "Curve","Bring","Chase","Cycle","Broad",
   "Cheap","Daily","Broke","Check","Dance",
 ];
+testWordBank = testWordBank.map((word) =>{
+  return word.toUpperCase()
+})
+/*---------------------------- Variables (state) ----------------------------*/
+let victory = false;
+let defeat = false;
 
+let letterList = [];
+let currentGuess = "";
+let currentGuessRebuilt = [];
+
+let currentIndex = 0;
+squareIds = [];
+for (let i = 0; i < 29; i++) {
+  squareIds.push(document.getElementById(i));
+}
+
+const randomWord =
+  testWordBank[Math.floor(Math.random() * testWordBank.length)];
+
+let cLetters = randomWord.split(""); 
+console.log(`the correct letters are ${cLetters}`);
 /*-------------------------------- Functions --------------------------------*/
 
 
@@ -31,7 +52,8 @@ function clickHandle(event) {
     square.innerHTML = target.textContent;
     letterList.push(target.textContent);
 
-    checkRow();
+    currentGuess = letterList.join('')
+
     joinLetter();
     checkGuess();
     correctGuess();
@@ -50,44 +72,25 @@ function clickHandle(event) {
   //
 }
 
-function checkRow(rowNumber) {
-
-  const rowDivs = document.querySelectorAll(`#row${rowNumber} div`);
-  for (let div of rowDivs) {
-    if (div.textContent === "") {
-      console.log("Test failed");
-      return false;
-    }
-  }
-  return true;
-}
+// 
 
 function joinLetter() {
   if (currentGuess.length < 5) {
-    console.log(`${currentGuess.length + 1} letters`);
+    console.log(`${currentGuess.length + 1} letters`) //todo make this appear as a dom element
   }
-  currentGuess = letterList.join("");
   if (currentGuess.length === 5) {
-    currentGuessRebuilt =
-      currentGuess.slice(0, 1).toUpperCase() +
-      currentGuess.slice(1).toLowerCase();
-    console.log(`${currentGuessRebuilt} is our guess!`);
+    console.log(`${currentGuess} is our guess!`); //todo make this appear as a dom element
   }
 }
 
 function checkGuess() {
   let matchingLetters = 0;
-  for (let i = 1; i < 5; i++) {
-    if (currentGuessRebuilt[i] === cLetters[i]){
-      document.querySelector(`#row${i}``#${currentIndex}`).style.backgroundColor = 'green'
+  
+  for (let i = 0; i < 5; i++) {
+    if (currentGuess[i] === cLetters[i]){
+                                    // document.querySelector(`#row${i}`).style.backgroundColor = 'green' for later
     }
-    else if (cLetters.includes(currentGuessRebuilt[i])) {
-      document.querySelector(`#row${i}``#${currentIndex}`).style.backgroundColor =
-        "yellow";
-    }
-    else {
-      document.querySelector(`#row${i}``#${currentIndex}`).style.backgroundColor = "grey";
-      }
+
   console.log(`There are ${matchingLetters} matching letters!`);
 }}
 
@@ -97,8 +100,6 @@ function correctGuess() {
     victory = true;
   } else if (currentGuessRebuilt.length === 5) {
     console.log("This is not a match, try again");
-    letterList = [];
-    currentGuess = "";
     currentGuessRebuilt = "";
   }
 }
@@ -115,25 +116,6 @@ function loserLoser() {
 }
 
 
-/*---------------------------- Variables (state) ----------------------------*/
-let victory = false;
-let defeat = false;
-
-let letterList = [];
-let currentGuess = "";
-let currentGuessRebuilt = "";
-
-let currentIndex = 0;
-squareIds = [];
-for (let i = 0; i < 29; i++) {
-  squareIds.push(document.getElementById(i));
-}
-
-const randomWord =
-  testWordBank[Math.floor(Math.random() * testWordBank.length)];
-
-let cLetters = randomWord.split(""); 
-console.log(`the correct letters are ${cLetters}`);
 
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll("button");
@@ -177,3 +159,15 @@ keyboard.addEventListener("click", clickHandle);
 // buttons.forEach(button => {
 //     button.addEventListener('click',clickHandle)
 // });
+    // checkRow();
+// function checkRow(rowNumber) {
+
+  //   const rowDivs = document.querySelectorAll(`#row${rowNumber} div`);
+  //   for (let div of rowDivs) {
+  //     if (div.textContent === "") {
+  //       console.log("Test failed");
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // }
