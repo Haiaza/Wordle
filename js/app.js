@@ -86,12 +86,12 @@ function checkGuess() {
   let matchingLetters = 0;
   for (let i = 0; i < 5; i++) {
     if (currentGuessRebuilt[i] === cLetters[i]) {
-      document.getElementById(`${currentIndex}`).style.backgroundColor =
+        document.getElementById(`${currentIndex}`).style.backgroundColor =
         "green";
         matchingLetters++;
     } 
     else if (cLetters.includes(currentGuessRebuilt[i])) {
-      document.getElementById(`${currentIndex}`).style.backgroundColor =
+        document.getElementById(`${currentIndex}`).style.backgroundColor =
         "yellow";
         matchingLetters++;
     } 
