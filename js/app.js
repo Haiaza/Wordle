@@ -40,6 +40,8 @@ const randomWord =
 
 let cLetters = randomWord.split(""); 
 console.log(`the correct letters are ${cLetters}`);
+
+
 /*-------------------------------- Functions --------------------------------*/
 
 
@@ -55,6 +57,8 @@ function clickHandle(event) {
 
     currentGuess = letterList.join('')
 
+    let rowIndex = Math.floor(currentIndex / 5);
+    let colIndex = currentIndex % 6;
 
     joinLetter();
     checkGuess( rowIndex,colIndex);
@@ -87,16 +91,20 @@ function joinLetter() {
 
 function checkGuess(rowIndex,colIndex) {
   let matchingLetters = 0;
-  
+
   for (let i = 0; i < 5; i++) {
+    let rowIndex = Math.floor(currentIndex / 5);
     if (board[`${rowIndex}` * 5 + i] === cLetters[i]){
-      // board[`${rowIndex}`] is undefined ??
-      document.getElementById(rowIndex * 5 + 1)  // this line needs to change
-      console.log('tst')
+      matchingLetters++
+      document.getElementById(rowIndex * 5 + i).style.backgroundColor ='red'  // this line needs to change
+    } else if (cLetters.includes(board[`${rowIndex}` * 5 + i])){
+      document.getElementById(rowIndex * 5 + i).style.backgroundColor ='yellow'
+    } else {
+      document.getElementById(rowIndex * 5 + i).style.backgroundColor ='white'
     }
-  
+
 }
- 
+
   console.log(`There are ${matchingLetters} matching letters!`);
 }
 
@@ -168,5 +176,3 @@ keyboard.addEventListener("click", clickHandle);
   //   }
   //   return true;
   // }
-      // let rowIndex = Math.floor(currentIndex / 5);
-    // let colIndex = currentIndex % 6;  I may use this later.
