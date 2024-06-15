@@ -55,8 +55,6 @@ function clickHandle(event) {
 
     currentGuess = letterList.join('')
 
-    const rowIndex = Math.floor(currentIndex / 5);
-    let colIndex = currentIndex % 6;
 
     joinLetter();
     checkGuess( rowIndex,colIndex);
@@ -131,15 +129,6 @@ const squares = document.querySelectorAll(".square");
 const rowDisplay = document.querySelectorAll(".row");
 const keyboard = document.getElementById("keyboard");
 
-columns = []
-for (let i = 0; i < 6; i++){
-  columns.push(document.getElementsByClassName(`column-${i + 1}`))
-}
-rows = []
-  for (let i = 0; i < 7; i++) {
-    rows.push(document.querySelector(`row${i + 1}`))
-    
-  }
 
 /*----------------------------- Event Listeners -----------------------------*/
 
@@ -179,3 +168,5 @@ keyboard.addEventListener("click", clickHandle);
   //   }
   //   return true;
   // }
+      // let rowIndex = Math.floor(currentIndex / 5);
+    // let colIndex = currentIndex % 6;  I may use this later.
